@@ -1,20 +1,40 @@
 import { Text, StyleSheet, View } from "react-native";
 import React, { Component } from "react";
 import AssumptionItem from "./AssumptionItem";
-const as = {
-  name: "awdad",
-  tags: ["awd", "aaa", "cccc"],
-};
 export default class AssumptionList extends Component {
   render() {
     return (
       <View>
-        <AssumptionItem itemName={as.name} tags={as.tags} />
-        <AssumptionItem itemName={as.name} tags={as.tags} />
-        <AssumptionItem itemName={as.name} tags={as.tags} />
-        <AssumptionItem itemName={as.name} tags={as.tags} />
-        <AssumptionItem itemName={as.name} tags={as.tags} />
-        <AssumptionItem itemName={as.name} tags={as.tags} />
+        <AssumptionItem
+          itemName={this.props.items[0] ? this.props.items[0].itemName : null}
+          tags={this.props.items[0] ? this.props.items[0].tags : null}
+          correct={this.props.correct ? true : false}
+        />
+        <AssumptionItem
+          itemName={this.props.items[1] ? this.props.items[1].itemName : null}
+          tags={this.props.items[1] ? this.props.items[1].tags : null}
+          correct={this.props.correct ? true : false}
+        />
+        <AssumptionItem
+          itemName={this.props.items[2] ? this.props.items[2].itemName : null}
+          tags={this.props.items[2] ? this.props.items[2].tags : null}
+          correct={this.props.correct ? true : false}
+        />
+        <AssumptionItem
+          itemName={this.props.items[3] ? this.props.items[3].itemName : null}
+          tags={this.props.items[3] ? this.props.items[3].tags : null}
+          correct={this.props.correct ? true : false}
+        />
+        <AssumptionItem
+          itemName={this.props.items[4] ? this.props.items[4].itemName : null}
+          tags={this.props.items[4] ? this.props.items[4].tags : null}
+          correct={this.props.correct ? true : false}
+        />
+        <AssumptionItem
+          itemName={this.props.items[5] ? this.props.items[5].itemName : null}
+          tags={this.props.items[5] ? this.props.items[5].tags : null}
+          correct={this.props.correct ? true : false}
+        />
       </View>
     );
   }
