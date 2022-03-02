@@ -19,22 +19,45 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       assumptions: [],
-      isModalVisible: false,
+      isAnswerModalVisible: false,
+      isGameEndedModalVisible: false,
+      won: false,
       correctAnswer: answers[Math.floor(Math.random() * answers.length)],
     };
-    this.toggleModal = this.toggleModal.bind();
+    this.toggleAnswerModal = this.toggleAnswerModal.bind();
+    this.toggleGameEndedModal = this.toggleGameEndedModal.bind();
     this.makeAssumption = this.makeAssumption.bind();
+    this.restartGame = this.restartGame.bind();
+    console.warn(this.state.correctAnswer);
   }
-  toggleModal = () => {
-    this.setState({ isModalVisible: !this.state.isModalVisible });
+  toggleGameEndedModal = () => {
+    this.setState({
+      isGameEndedModalVisible: !this.state.isGameEndedModalVisible,
+    });
+  };
+  toggleAnswerModal = () => {
+    this.setState({ isAnswerModalVisible: !this.state.isAnswerModalVisible });
   };
   makeAssumption = (answer) => {
-    if (answer.itemName === this.state.correctAnswer.itemName)
-      answer.correct = true;
+    this.toggleAnswerModal();
     this.setState({ assumptions: [...this.state.assumptions, answer] });
-    this.toggleModal();
+    if (
+      answer.itemName === this.state.correctAnswer.itemName ||
+      this.state.assumptions.length >= 6
+    ) {
+      this.setState({ won: true });
+      this.toggleGameEndedModal();
+    }
   };
-
+  restartGame = () => {
+    this.setState({
+      assumptions: [],
+      isAnswerModalVisible: false,
+      isGameEndedModalVisible: false,
+      won: false,
+      correctAnswer: answers[Math.floor(Math.random() * answers.length)],
+    });
+  };
   render() {
     return (
       <SafeAreaView style={styles.container}>
@@ -50,9 +73,12 @@ export default class App extends React.Component {
             AnswerItem:albumName,thumbnail
 
         */}
-        <AssumptionList items={this.state.assumptions} />
+        <AssumptionList
+          items={this.state.assumptions}
+          correctAnswer={this.state.correctAnswer}
+        />
         <Pressable
-          onPressIn={this.toggleModal}
+          onPressIn={this.toggleAnswerModal}
           style={({ pressed }) => [
             {
               backgroundColor: pressed ? "rgb(210, 230, 255)" : "#93F2A3",
@@ -67,7 +93,10 @@ export default class App extends React.Component {
           )}
         </Pressable>
 
-        <Modal isVisible={this.state.isModalVisible} useNativeDriver={true}>
+        <Modal
+          isVisible={this.state.isAnswerModalVisible}
+          useNativeDriver={true}
+        >
           <View style={{ flex: 1, justifyContent: "space-between" }}>
             <View>
               <Text style={styles.answerModalTitle}>Choose One</Text>
@@ -77,7 +106,7 @@ export default class App extends React.Component {
               />
             </View>
             <Pressable
-              onPressIn={this.toggleModal}
+              onPressIn={this.toggleAnswerModal}
               style={({ pressed }) => [
                 {
                   backgroundColor: pressed ? "rgb(210, 230, 255)" : "#F293A3",
@@ -88,6 +117,37 @@ export default class App extends React.Component {
               {({ pressed }) => (
                 <Text style={styles.buttonText}>
                   {pressed ? "Canceld" : "Cancel"}
+                </Text>
+              )}
+            </Pressable>
+          </View>
+        </Modal>
+        <Modal
+          isVisible={this.state.isGameEndedModalVisible}
+          useNativeDriver={true}
+        >
+          <View style={{ flex: 1, justifyContent: "space-around" }}>
+            <Text
+              style={{
+                fontSize: 40,
+                textAlign: "center",
+                color: this.state.won ? "#93F2A3" : "#93F2A3",
+              }}
+            >
+              {this.state.won ? "You Win." : "You Lose."}
+            </Text>
+            <Pressable
+              onPressIn={this.restartGame}
+              style={({ pressed }) => [
+                {
+                  backgroundColor: pressed ? "rgb(210, 230, 255)" : "#93F2A3",
+                },
+                styles.button,
+              ]}
+            >
+              {({ pressed }) => (
+                <Text style={styles.buttonText}>
+                  {pressed ? "Restarting..." : "Restart"}
                 </Text>
               )}
             </Pressable>

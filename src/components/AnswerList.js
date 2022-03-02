@@ -5,9 +5,10 @@ export default class AnswerList extends Component {
     return (
       <ScrollView>
         {this.props.possibleAnswers
-          ? this.props.possibleAnswers.map((answer) => {
+          ? this.props.possibleAnswers.map((answer, key) => {
               return (
                 <Pressable
+                  key={key}
                   onPressIn={() => {
                     this.props.answerCallback(answer);
                   }}

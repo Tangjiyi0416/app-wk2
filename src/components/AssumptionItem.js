@@ -4,24 +4,32 @@ import React, { Component } from "react";
 export default class AssumptionItem extends Component {
   render() {
     return (
-      <View style={styles.item}>
-        <Text
-          style={
-            ({ borderColor: this.props.correct ? "#048548" : "#888" },
-            styles.itemName)
-          }
-        >
-          {this.props.itemName || ""}
-        </Text>
+      <View
+        style={[
+          styles.item,
+          {
+            borderColor:
+              this.props.correctItemName === this.props.itemName
+                ? "#048548"
+                : "#888",
+          },
+        ]}
+      >
+        <Text style={styles.itemName}>{this.props.itemName || ""}</Text>
         <View style={styles.itemTagsContainer}>
           {this.props.tags
             ? this.props.tags.map((tag, key) => {
+                // console.warn(`${tag}, ${this.props.correctTags}`);
                 return (
                   <Text
-                    style={
-                      ({ borderColor: this.props.correct ? "#048548" : "#888" },
-                      styles.itemTag)
-                    }
+                    style={[
+                      styles.itemTag,
+                      {
+                        borderColor: this.props.correctTags.includes(tag)
+                          ? "#048548"
+                          : "#888",
+                      },
+                    ]}
                     key={key}
                   >
                     {tag}
