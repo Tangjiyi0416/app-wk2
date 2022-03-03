@@ -59,6 +59,7 @@ const styles = StyleSheet.create({
     borderColor: "#888",
     margin: 10,
     padding: 5,
+    flexWrap: "wrap",
   },
   itemName: {
     fontSize: 20,
@@ -67,10 +68,11 @@ const styles = StyleSheet.create({
   },
   itemTagsContainer: {
     flexDirection: "row",
+    flexWrap: "wrap",
   },
   itemTag: {
     fontSize: 14,
-    marginHorizontal: 5,
+    margin: 3,
     padding: 3,
     borderColor: "#888",
     borderWidth: 2,

@@ -1,70 +1,71 @@
 [{
         "itemName": "Metalizer",
         "artist": "Sabaton",
-        "tags": ["Power Metal", ""],
+        "tags": ["Power Metal", "Joakim Brodén", "Oskar Montelius", "Rikard Sundén", "Joakim Brodén", "Pär Sundström", "Daniel Mullback"],
         "image": "https://upload.wikimedia.org/wikipedia/en/2/22/Metalizer.jpg",
         "thumbnail_image": "https://upload.wikimedia.org/wikipedia/en/2/22/Metalizer.jpg"
     },
     {
         "itemName": "Primo Victoria",
         "artist": "Sabaton",
-        "tags": ["Power Metal", "a", "c"],
+        "tags": ["Power Metal", "Joakim Brodén", "Oskar Montelius", "Rikard Sundén", "Joakim Brodén", "Pär Sundström", "Daniel Mullback"],
         "image": "https://upload.wikimedia.org/wikipedia/en/8/8f/Primo_Victoria_album_cover.jpg",
         "thumbnail_image": "https://upload.wikimedia.org/wikipedia/en/8/8f/Primo_Victoria_album_cover.jpg"
     },
     {
         "itemName": "Attero Dominatus",
         "artist": "Sabaton",
-        "tags": ["Power Metal", "b", "c"],
+        "tags": ["Power Metal", "Joakim Brodén", "Oskar Montelius", "Rikard Sundén", "Daniel Mÿhr", "Pär Sundström", "Daniel Mullback"],
         "image": "https://upload.wikimedia.org/wikipedia/en/a/a4/Attero_Dominatus.jpg",
         "thumbnail_image": "https://upload.wikimedia.org/wikipedia/en/a/a4/Attero_Dominatus.jpg"
     },
     {
         "itemName": "The Art of War",
         "artist": "Sabaton",
-        "tags": ["Power Metal", "a", "d"],
+        "tags": ["Power Metal", "Joakim Brodén", "Oskar Montelius", "Rikard Sundén", "Daniel Mÿhr", "Pär Sundström", "Daniel Mullback"],
         "image": "https://upload.wikimedia.org/wikipedia/en/4/42/Cover_art_of_war.jpg",
         "thumbnail_image": "https://upload.wikimedia.org/wikipedia/en/4/42/Cover_art_of_war.jpg"
     },
     {
         "itemName": "Coat of Arms",
         "artist": "Sabaton",
-        "tags": ["Power Metal", "c", "d"],
+        "tags": ["Power Metal", "Joakim Brodén", "Oskar Montelius", "Rikard Sundén", "Daniel Mÿhr", "Pär Sundström", "Daniel Mullback"],
+
         "image": "https://upload.wikimedia.org/wikipedia/en/2/2b/Cover_coat_of_arms.jpg",
         "thumbnail_image": "https://upload.wikimedia.org/wikipedia/en/2/2b/Cover_coat_of_arms.jpg"
     },
     {
         "itemName": "Carolus Rex",
         "artist": "Sabaton",
-        "tags": ["Power Metal", "c", "d"],
+        "tags": ["Power Metal", "Joakim Brodén", "Oskar Montelius", "Rikard Sundén", "Daniel Mÿhr", "Pär Sundström", "Daniel Mullback"],
         "image": "https://upload.wikimedia.org/wikipedia/en/0/06/Sabaton_Carolus_Rex.jpg",
         "thumbnail_image": "https://upload.wikimedia.org/wikipedia/en/0/06/Sabaton_Carolus_Rex.jpg"
     },
     {
         "itemName": "Heroes",
         "artist": "Sabaton",
-        "tags": ["Power Metal", "c", "d"],
+        "tags": ["Power Metal", "Joakim Brodén", "Chris Rörland", "Thobbe Englund", "Joakim Brodén", "Pär Sundström", "Hannes van Dahl"],
         "image": "https://upload.wikimedia.org/wikipedia/en/f/f9/Sabaton_Alblem_cover.jpg",
         "thumbnail_image": "https://upload.wikimedia.org/wikipedia/en/f/f9/Sabaton_Alblem_cover.jpg"
     },
     {
         "itemName": "The Last Stand",
         "artist": "Sabaton",
-        "tags": ["Power Metal", "c", "d"],
+        "tags": ["Power Metal", "Joakim Brodén", "Chris Rörland", "Thobbe Englund", "Joakim Brodén", "Pär Sundström", "Hannes van Dahl"],
         "image": "https://upload.wikimedia.org/wikipedia/en/6/6a/Sabaton_-_The_Last_Stand_cover.jpg",
         "thumbnail_image": "https://upload.wikimedia.org/wikipedia/en/6/6a/Sabaton_-_The_Last_Stand_cover.jpg"
     },
     {
         "itemName": "The Great War",
         "artist": "Sabaton",
-        "tags": ["Power Metal", "c", "d"],
+        "tags": ["Power Metal", "Joakim Brodén", "Chris Rörland", "Tommy Johansson", "Joakim Brodén", "Pär Sundström", "Hannes van Dahl"],
         "image": "https://upload.wikimedia.org/wikipedia/en/4/48/Sabaton_-_The_Great_War.jpg",
         "thumbnail_image": "https://upload.wikimedia.org/wikipedia/en/4/48/Sabaton_-_The_Great_War.jpg"
     },
     {
         "itemName": "The War to End All Wars",
         "artist": "Sabaton",
-        "tags": ["Power Metal", "c", "d"],
+        "tags": ["Power Metal", "Joakim Brodén", "Chris Rörland", "Tommy Johansson", "Joakim Brodén", "Pär Sundström", "Hannes van Dahl"],
         "image": "https://upload.wikimedia.org/wikipedia/en/5/59/The_War_to_End_All_Wars_Sabaton.jpg",
         "thumbnail_image": "https://upload.wikimedia.org/wikipedia/en/5/59/The_War_to_End_All_Wars_Sabaton.jpg"
     }

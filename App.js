@@ -14,6 +14,7 @@ import React from "react";
 import AssumptionList from "./src/components/AssumptionList";
 import AnswerList from "./src/components/AnswerList";
 import answers from "./src/json/albums.json";
+import { ScrollView } from "react-native";
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -72,25 +73,27 @@ export default class App extends React.Component {
             AnswerItem:albumName,thumbnail
 
         */}
-        <AssumptionList
-          items={this.state.assumptions}
-          correctAnswer={this.state.correctAnswer}
-        />
-        <Pressable
-          onPressIn={this.toggleAnswerModal}
-          style={({ pressed }) => [
-            {
-              backgroundColor: pressed ? "rgb(210, 230, 255)" : "#93F2A3",
-            },
-            styles.button,
-          ]}
-        >
-          {({ pressed }) => (
-            <Text style={styles.buttonText}>
-              {pressed ? "Waiting..." : "Make a Guess!"}
-            </Text>
-          )}
-        </Pressable>
+        <ScrollView>
+          <AssumptionList
+            items={this.state.assumptions}
+            correctAnswer={this.state.correctAnswer}
+          />
+          <Pressable
+            onPressIn={this.toggleAnswerModal}
+            style={({ pressed }) => [
+              {
+                backgroundColor: pressed ? "rgb(210, 230, 255)" : "#93F2A3",
+              },
+              styles.button,
+            ]}
+          >
+            {({ pressed }) => (
+              <Text style={styles.buttonText}>
+                {pressed ? "Waiting..." : "Make a Guess!"}
+              </Text>
+            )}
+          </Pressable>
+        </ScrollView>
 
         <Modal
           isVisible={this.state.isAnswerModalVisible}
