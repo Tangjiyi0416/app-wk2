@@ -1,4 +1,4 @@
-import { Text, StyleSheet, View } from "react-native";
+import { Text, StyleSheet, View, Image } from "react-native";
 import React, { Component } from "react";
 
 export default class AssumptionItem extends Component {
@@ -9,23 +9,32 @@ export default class AssumptionItem extends Component {
           styles.item,
           {
             borderColor:
-              this.props.correctItemName === this.props.itemName
+              this.props.correctItem.itemName ===
+              (this.props.item ? this.props.item.itemName : null)
                 ? "#048548"
                 : "#888",
           },
         ]}
       >
-        <Text style={styles.itemName}>{this.props.itemName || ""}</Text>
+        <Image
+          style={styles.itemThumbnail}
+          source={{
+            uri: this.props.item ? this.props.item.thumbnail_image : null,
+          }}
+        />
+        <Text style={styles.itemName}>
+          {this.props.item ? this.props.item.itemName : null}
+        </Text>
         <View style={styles.itemTagsContainer}>
-          {this.props.tags
-            ? this.props.tags.map((tag, key) => {
+          {this.props.item
+            ? this.props.item.tags.map((tag, key) => {
                 // console.warn(`${tag}, ${this.props.correctTags}`);
                 return (
                   <Text
                     style={[
                       styles.itemTag,
                       {
-                        borderColor: this.props.correctTags.includes(tag)
+                        borderColor: this.props.correctItem.tags.includes(tag)
                           ? "#048548"
                           : "#888",
                       },
@@ -54,6 +63,7 @@ const styles = StyleSheet.create({
   itemName: {
     fontSize: 20,
     marginRight: 5,
+    textAlign: "center",
   },
   itemTagsContainer: {
     flexDirection: "row",
@@ -66,5 +76,11 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     textAlignVertical: "center",
     textAlign: "center",
+    height: 30,
+  },
+  itemThumbnail: {
+    height: 50,
+    width: 50,
+    margin: 5,
   },
 });

@@ -1,11 +1,11 @@
-import { StatusBar } from "expo-status-bar";
 import {
   StyleSheet,
   Text,
   SafeAreaView,
   Pressable,
   View,
-  Button,
+  StatusBar,
+  Image,
 } from "react-native";
 import Header from "./src/components/Header";
 import Modal from "react-native-modal";
@@ -28,7 +28,7 @@ export default class App extends React.Component {
     this.toggleGameEndedModal = this.toggleGameEndedModal.bind();
     this.makeAssumption = this.makeAssumption.bind();
     this.restartGame = this.restartGame.bind();
-    console.warn(this.state.correctAnswer);
+    // console.warn(this.state.correctAnswer);
   }
   toggleGameEndedModal = () => {
     this.setState({
@@ -41,11 +41,10 @@ export default class App extends React.Component {
   makeAssumption = (answer) => {
     this.toggleAnswerModal();
     this.setState({ assumptions: [...this.state.assumptions, answer] });
-    if (
-      answer.itemName === this.state.correctAnswer.itemName ||
-      this.state.assumptions.length >= 6
-    ) {
+    if (answer.itemName === this.state.correctAnswer.itemName) {
       this.setState({ won: true });
+      this.toggleGameEndedModal();
+    } else if (this.state.assumptions.length >= 5) {
       this.toggleGameEndedModal();
     }
   };
@@ -98,46 +97,57 @@ export default class App extends React.Component {
           useNativeDriver={true}
         >
           <View style={{ flex: 1, justifyContent: "space-between" }}>
-            <View>
+            <View style={{ flex: 9 }}>
               <Text style={styles.answerModalTitle}>Choose One</Text>
               <AnswerList
                 answerCallback={this.makeAssumption}
                 possibleAnswers={answers}
               />
             </View>
-            <Pressable
-              onPressIn={this.toggleAnswerModal}
-              style={({ pressed }) => [
-                {
-                  backgroundColor: pressed ? "rgb(210, 230, 255)" : "#F293A3",
-                },
-                styles.button,
-              ]}
-            >
-              {({ pressed }) => (
-                <Text style={styles.buttonText}>
-                  {pressed ? "Canceld" : "Cancel"}
-                </Text>
-              )}
-            </Pressable>
+            <View style={{ flex: 1 }}>
+              <Pressable
+                onPressIn={this.toggleAnswerModal}
+                style={({ pressed }) => [
+                  {
+                    backgroundColor: pressed ? "rgb(210, 230, 255)" : "#F293A3",
+                  },
+                  styles.button,
+                ]}
+              >
+                {({ pressed }) => (
+                  <Text style={styles.buttonText}>
+                    {pressed ? "Canceld" : "Cancel"}
+                  </Text>
+                )}
+              </Pressable>
+            </View>
           </View>
         </Modal>
         <Modal
           isVisible={this.state.isGameEndedModalVisible}
           useNativeDriver={true}
+          onModalHide={this.restartGame}
         >
           <View style={{ flex: 1, justifyContent: "space-around" }}>
             <Text
               style={{
                 fontSize: 40,
                 textAlign: "center",
-                color: this.state.won ? "#93F2A3" : "#93F2A3",
+                color: this.state.won ? "#93F2A3" : "#F293A3",
               }}
             >
               {this.state.won ? "You Win." : "You Lose."}
             </Text>
+            <Text style={{ fontSize: 20, color: "#FFF" }}>Correct Answer:</Text>
+            <Text style={[styles.correctAnswerText, { alignSelf: "center" }]}>
+              {this.state.correctAnswer.itemName}
+            </Text>
+            <Image
+              style={styles.image}
+              source={{ uri: this.state.correctAnswer.image }}
+            />
             <Pressable
-              onPressIn={this.restartGame}
+              onPressIn={this.toggleGameEndedModal}
               style={({ pressed }) => [
                 {
                   backgroundColor: pressed ? "rgb(210, 230, 255)" : "#93F2A3",
@@ -170,5 +180,14 @@ const styles = StyleSheet.create({
     color: "#FFF",
     textAlign: "center",
     margin: 13,
+  },
+  image: {
+    height: 200,
+    width: 200,
+    alignSelf: "center",
+  },
+  correctAnswerText: {
+    fontSize: 60,
+    color: "#FFF",
   },
 });
