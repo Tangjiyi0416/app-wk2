@@ -20,6 +20,7 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       assumptions: [],
+      isGuideModalVisible: false,
       isAnswerModalVisible: false,
       isGameEndedModalVisible: false,
       won: false,
@@ -34,6 +35,11 @@ export default class App extends React.Component {
   toggleGameEndedModal = () => {
     this.setState({
       isGameEndedModalVisible: !this.state.isGameEndedModalVisible,
+    });
+  };
+  toggleGuideModal = () => {
+    this.setState({
+      isGuideModalVisible: !this.state.isGuideModalVisible,
     });
   };
   toggleAnswerModal = () => {
@@ -93,8 +99,44 @@ export default class App extends React.Component {
               </Text>
             )}
           </Pressable>
+          <Pressable
+            onPressIn={this.toggleGuideModal}
+            style={({ pressed }) => [
+              {
+                backgroundColor: pressed ? "rgb(210, 230, 255)" : "#93F2A3",
+              },
+              styles.button,
+            ]}
+          >
+            {({ pressed }) => (
+              <Text style={styles.buttonText}>{pressed ? "簡介" : "簡介"}</Text>
+            )}
+          </Pressable>
         </ScrollView>
-
+        <Modal isVisible={this.state.isGuideModalVisible}>
+          <View>
+            <Text style={{ fontSize: 15, color: "#FFF" }}>
+              按下"Make a
+              Guess!"來猜猜看是哪一部專輯，每部專輯都有各自的tag，和正確答案相同的tag會呈綠色，不同的是灰色。
+              在6次以內猜中就勝利！
+            </Text>
+            <Pressable
+              onPressIn={this.toggleGuideModal}
+              style={({ pressed }) => [
+                {
+                  backgroundColor: pressed ? "rgb(210, 230, 255)" : "#93F2A3",
+                },
+                styles.button,
+              ]}
+            >
+              {({ pressed }) => (
+                <Text style={styles.buttonText}>
+                  {pressed ? "close" : "close"}
+                </Text>
+              )}
+            </Pressable>
+          </View>
+        </Modal>
         <Modal
           isVisible={this.state.isAnswerModalVisible}
           useNativeDriver={true}
